@@ -8,7 +8,7 @@ import React from 'react'
 import { OrbitControls } from '@react-three/drei';
 import { GLTF } from 'three-stdlib'
 import { Kiwi } from './kiwi';
-
+import { Avocado } from './avocado';
 // export function Box(props) {
 //   const { x } = props
 //   const width = 700;
@@ -126,7 +126,7 @@ export function PlayersRender() {
 
       {columnsP2.map((x) =>
         rowsP2.map((y) => (
-          <CirlePlayers
+          <CirlePlayers2
             key={`(${x},${y})`}
             x={x}
             y={y}
@@ -147,5 +147,17 @@ export function CirlePlayers({
   console.log(x, y, z, size)
   return (
     <Kiwi scale={size} position={[x - 4, z || 0, y - 4]} />
+  );
+};
+
+export function CirlePlayers2({
+  x,
+  y,
+  z,
+  size,
+}) {
+  console.log(x, y, z, size)
+  return (
+    <Avocado scale={size} position={[x - 4, z || 0, y - 4]} />
   );
 };
