@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 // import { useFrame, useLoader } from '@react-three/fiber'
 // import { SchoolDesk } from './schoolDesk.tsx'
 // import { TextureLoader } from 'three/src/loaders/TextureLoader';
@@ -144,9 +144,23 @@ export function CirlePlayers({
   z,
   size,
 }) {
+  const [scalePlayer1, setScalePlayer1] = useState(8);
+  const [scaleZindex, setScaleZindex] = useState(0);
+
+  function clickHandle() {
+    if (scalePlayer1 == 8) {
+      setScalePlayer1(scalePlayer1 + 3)
+      setScaleZindex(scaleZindex + 0.2)
+    }
+    else {
+      setScalePlayer1(scalePlayer1 - 3)
+      setScaleZindex(scaleZindex - 0.2)
+
+    }
+  }
   console.log(x, y, z, size)
   return (
-    <Kiwi scale={size} position={[x - 4, z || 0, y - 4]} />
+    <Kiwi scale={scalePlayer1} position={[x - 4, z || scaleZindex, y - 4]} onClick={() => clickHandle()} />
   );
 };
 
@@ -157,7 +171,23 @@ export function CirlePlayers2({
   size,
 }) {
   console.log(x, y, z, size)
+  const [scalePlayer2, setScalePlayer2] = useState(8);
+  const [scaleZindex, setScaleZindex] = useState(0);
+
+  function clickHandle() {
+    if (scalePlayer2 == 8) {
+      setScalePlayer2(scalePlayer2 + 3)
+      setScaleZindex(scaleZindex + 0.2)
+    }
+    else {
+      setScalePlayer2(scalePlayer2 - 3)
+      setScaleZindex(scaleZindex - 0.2)
+    }
+  }
   return (
-    <Avocado scale={size} position={[x - 4, z || 0, y - 4]} />
+    <Avocado scale={scalePlayer2} position={[x - 4, z || scaleZindex, y - 4]} onClick={() => clickHandle()} />
   );
 };
+
+
+
