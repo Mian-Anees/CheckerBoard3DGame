@@ -6,6 +6,8 @@ import React from 'react'
 // import * as THREE from "three";
 // import { useDrag } from "react-use-gesture"
 import { OrbitControls } from '@react-three/drei';
+import { GLTF } from 'three-stdlib'
+import { Kiwi } from './kiwi';
 
 // export function Box(props) {
 //   const { x } = props
@@ -51,6 +53,7 @@ export const MainScene = () => {
     <pointLight position={[5, 5, 0]} intensity={4} />
     <OrbitControls />
     <CheckerBoard />
+    <PlayersRender />
     {/* <Box x={5} />
     <Box x={2} /> */}
     {/* <SchoolDesk  /> */}
@@ -95,5 +98,54 @@ export function Box({
         <meshStandardMaterial attach="material" color={color} />
       </mesh>
     </group>
+  );
+};
+
+
+//****************************** render army ****************************
+
+export function PlayersRender() {
+  const columnsP1 = [0, 1, 2];
+  const rowsP1 = [0, 1, 2, 3, 4, 5, 6, 7]
+  const columnsP2 = [7, 6, 5];
+  const rowsP2 = [7, 6, 5, 4, 3, 2, 1, 0]
+
+  return (
+    <>
+      {columnsP1.map((x) =>
+        rowsP1.map((y) => (
+          <CirlePlayers
+            key={`(${x},${y})`}
+            x={x}
+            y={y}
+            size={8}
+
+          />
+        ))
+      )}
+
+      {columnsP2.map((x) =>
+        rowsP2.map((y) => (
+          <CirlePlayers
+            key={`(${x},${y})`}
+            x={x}
+            y={y}
+            size={8}
+          />
+        ))
+      )}
+    </>
+  );
+};
+
+export function CirlePlayers({
+  x,
+  y,
+  z,
+  size,
+}) {
+  console.log(x, y, z, size)
+  return (
+    <Kiwi scale={size} position={[x - 4, z || 0, y - 4]} />
   );
 };

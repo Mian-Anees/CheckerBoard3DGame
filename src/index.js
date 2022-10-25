@@ -9,7 +9,7 @@ import { Canvas } from '@react-three/fiber'
 createRoot(document.getElementById('root')).render(
   <div style={{ backgroundColor: "grey", width: "1520px", height: "900px" }}>
     <Canvas
-      camera={{ position: [4, 10, 0] }}
+      camera={{ position: [0, 10, 0] }}
     >
       <MainScene />
     </Canvas>,
